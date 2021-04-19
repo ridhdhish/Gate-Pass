@@ -9,12 +9,14 @@ const { main } = require("../utils/sendMail");
 const sendResponse = utils.sendResponse;
 
 // Signup api
-module.exports.signup = async (req, res) => {
+module.exports.signup = async (req, res, next) => {
+  console.log("File:", req.file);
   const { email, mobile, name } = req.body;
+  const profilePic = "uploads/pic/" + req.file.filename;
   console.log(req.body);
 
   try {
-    const user = await User.create({ email, name, mobile });
+    const user = await User.create({ email, name, mobile, profilePic });
     // const token = generateToken(user);
     res.status(200).json({ user });
   } catch (err) {
