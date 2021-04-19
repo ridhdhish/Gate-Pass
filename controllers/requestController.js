@@ -2,7 +2,7 @@ const Request = require("../models/Request");
 
 module.exports.makeRequest = async (req, res) => {
   try {
-    const request = await Request.create({ ...req.body });
+    const request = await Request.create({ ...req.body, userId: req.user._id });
 
     res.status(200).json({ request });
   } catch (err) {
@@ -22,7 +22,7 @@ module.exports.getAllRequest = async (req, res) => {
 
 module.exports.myRequests = async (req, res) => {
   try {
-    const requests = await Request.findById({ userId: req.body._id });
+    const requests = await Request.find({ userId: req.user._id });
 
     res.status(200).json({ requests });
   } catch (err) {

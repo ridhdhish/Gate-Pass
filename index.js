@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const doorKeeperRoutes = require("./routes/doorKeeperRoutes");
+const requestRoutes = require("./routes/requestRoutes");
 
 const app = express();
 
@@ -34,4 +35,5 @@ module.exports = mongoose
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api/doorkeeper", doorKeeperRoutes);
+app.use("/api/request", requestRoutes);
 app.get("/", (req, res) => res.send("Hello"));
