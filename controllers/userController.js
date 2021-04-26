@@ -7,6 +7,7 @@ const { sendResponse } = require("../utils/sendResponse");
 */
 module.exports.updateUser = async (req, res) => {
   const { email, mobile, name, userId } = req.body;
+  console.log(req.body);
   try {
     const user = await User.findById(userId);
 
@@ -43,7 +44,7 @@ module.exports.deleteUser = async (req, res) => {
 
     await User.findByIdAndDelete(userId);
 
-    res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ user });
   } catch (err) {
     console.log(err);
     return sendResponse(res, "Internal server error");
@@ -52,21 +53,21 @@ module.exports.deleteUser = async (req, res) => {
 
 /*
     route: GET /user
-    description: Fetch current user
+    description: Fetch all user
 */
 module.exports.getUser = async (req, res) => {
   try {
-    const userId = req.user._id;
+    const users = await User.find({});
 
-    const user = await User.findById(userId);
-
-    if (!user) {
+    if (!users) {
       return sendResponse(res, "Unable to fetch user", 404);
     }
 
-    res.status(200).json({ user });
+    res.status(200).json({ users });
   } catch (err) {
     console.log(err);
     return sendResponse(res, "Internal server error");
   }
 };
+
+module.exports.getProfilePic = async (req, res) => {};

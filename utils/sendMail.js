@@ -17,7 +17,7 @@ const main = async (otp, email) => {
     });
 
     const info = await transporter.sendMail({
-      from: '"Ridhdhish" <sutofficialindia@gmail.com>', // sender address
+      from: "<sutofficialindia@gmail.com>", // sender address
       to: `${email}`, // list of receivers
       subject: "OTP", // Subject line
       text: `${otp}`, // plain text body

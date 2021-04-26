@@ -20,12 +20,22 @@ module.exports.delete = async (req, res) => {
     if (doorKeeper) {
       return res
         .status(200)
-        .json({ msg: "Door keeper has been deleted successfully" });
+        .json({ msg: "Door keeper has been deleted successfully", doorKeeper });
     }
 
     res.status(404).json({ err: "Error while deleting" });
   } catch (err) {
     console.log(err);
     res.status(500).json("Internal Server error");
+  }
+};
+
+module.exports.getAll = async (req, res) => {
+  try {
+    const doorKeepers = await DoorKeeper.find({});
+
+    res.status(200).json({ doorKeepers });
+  } catch (err) {
+    console.log(err);
   }
 };
