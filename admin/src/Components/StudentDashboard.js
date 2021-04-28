@@ -99,7 +99,7 @@ export default function StudentDashboard() {
             <thead>
               <tr>
                 <th>#</th>
-                {/* <th>Profile Pic</th> */}
+                <th>Profile Pic</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile Number</th>
@@ -108,17 +108,17 @@ export default function StudentDashboard() {
             </thead>
             <tbody>
               {students.map((student, index) => {
-                console.log(student.profilePic);
+                //console.log(student.profilePic);
                 return (
                   <tr key={student._id}>
                     <td>{index + 1}</td>
-                    {/* <td>
+                    <td>
                       <img
                         style={{ width: 50, height: 50 }}
-                        src={"../../uploads/1619011212491bc1.jpg"}
+                        src={`data:image/jpeg;base64, ${student.profilePic}`}
                         alt="profile pic"
                       />
-                    </td> */}
+                    </td>
                     <td>{student.name}</td>
                     <td>{student.email}</td>
                     <td>{student.mobile}</td>

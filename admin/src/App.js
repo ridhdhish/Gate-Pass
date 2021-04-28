@@ -1,6 +1,7 @@
 import "./App.css";
 import StudentDashboard from "./Components/StudentDashboard";
 import DoorKeerper from "./Components/DoorKeeper";
+import Requests from "./Components/Requests";
 import { Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -24,10 +25,20 @@ function App() {
               Student
             </Link>
             <Link
-              style={{ textDecoration: "none", color: "white" }}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "1rem",
+              }}
               to="/doorKeeper"
             >
               Door Keeper
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to="/requests"
+            >
+              Leave Requests
             </Link>
           </Nav>
         </Navbar>
@@ -35,7 +46,9 @@ function App() {
           <Route path="/doorKeeper">
             <DoorKeerper />
           </Route>
-          <Route path="/requests"></Route>
+          <Route path="/requests">
+            <Requests />
+          </Route>
           <Route path="/">
             <StudentDashboard />
           </Route>

@@ -1,6 +1,9 @@
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
 const utils = require("../utils/sendResponse");
+const fs = require("fs");
+const path = require("path");
+const base64Img = require("base64-img");
+const imageToBase64 = require("image-to-base64");
 
 const { generateToken } = require("../utils/createToken");
 const { otpGenerator } = require("../utils/OTPGenerator");
@@ -10,14 +13,26 @@ const sendResponse = utils.sendResponse;
 
 // Signup api
 module.exports.signup = async (req, res, next) => {
-  console.log("File:", req.file);
   const { email, mobile, name } = req.body;
-  //const profilePic = "uploads/pic/" + req.file.filename;
-  console.log(req.body);
+  console.log(req.file);
+  let base64Image;
+
+  base64Image = await imageToBase64(
+    path.join("uploads", "pic", req.file.filename)
+  ); // Path to the image
+
+  console.log(base64Image);
 
   try {
-    const user = await User.create({ email, name, mobile });
-    // const token = generateToken(user);
+    fs.unlinkSync(path.join("uploads", "pic", req.file.filename));
+
+    const user = await User.create({
+      email,
+      name,
+      mobile,
+      profilePic: base64Image,
+    });
+
     res.status(200).json({ user });
   } catch (err) {
     console.log(err);

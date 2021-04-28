@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+
+import base64Image from "base64-img";
 import axios from "axios";
 
 import "./AddStudent.css";
@@ -16,7 +18,7 @@ export default function AddStudent(props) {
     console.log(student);
 
     const formData = new FormData();
-    //formData.append("profilePic", student.profilePic);
+    formData.append("profilePic", student.profilePic);
     formData.append("email", student.email);
     formData.append("name", student.name);
     formData.append("mobile", student.mobile);
@@ -34,6 +36,21 @@ export default function AddStudent(props) {
     console.log(data);
     props.setNewStudent(data);
     props.onClose();
+
+    // const url = await base64Image.base64(student.profilePic);
+
+    // const response = await fetch("http://localhost:3000/api/auth/signup", {
+    //   method: "POST",
+    //   mode: "cors",
+    //   cache: "no-cache",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({ ...student, profilePic: url }),
+    // });
+
+    // const data = await response.json();
+    // console.log(data.user);
   };
 
   return (
@@ -98,7 +115,7 @@ export default function AddStudent(props) {
             />
           </Form.Group>
 
-          {/* <Form.Group controlId="formBasicPassword">
+          <Form.Group controlId="formBasicPassword">
             <Form.Label>Student image</Form.Label>
             <Form.Control
               onChange={(e) => {
@@ -108,10 +125,15 @@ export default function AddStudent(props) {
               type="file"
               placeholder="Mobile number"
             />
-          </Form.Group> */}
+          </Form.Group>
           <Button
             onClick={() => {
-              if (student.email && student.name && student.mobile) {
+              if (
+                student.email &&
+                student.name &&
+                student.mobile &&
+                student.profilePic
+              ) {
                 addStudentHandler();
                 return;
               }

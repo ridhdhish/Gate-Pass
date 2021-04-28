@@ -25,9 +25,13 @@ const requestSchema = new mongoose.Schema({
     type: String,
     default: "pending",
   },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: [true, "Userid must be required"],
+  email: {
+    type: String,
+    required: [true, "Email must be required"],
+  },
+  imgBase64: {
+    type: String,
+    default: "",
   },
 });
 
