@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import { URI } from "../utils/keys";
+
 export default function AddDoorKeeper(props) {
   const [doorKeeper, setDoorKeeper] = useState({
     name: "",
@@ -8,7 +10,7 @@ export default function AddDoorKeeper(props) {
   });
 
   const addDoorKeeperHandler = async () => {
-    const resposne = await fetch("http://localhost:3000/api/doorKeeper/add", {
+    const resposne = await fetch(`${URI}api/doorKeeper/add`, {
       method: "POST",
       mode: "cors",
       cache: "no-cache",

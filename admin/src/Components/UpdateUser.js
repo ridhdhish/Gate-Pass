@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import { URI } from "../utils/keys";
+
 export default function UpdateUser(props) {
   const [student, setStudent] = useState({
     name: "",
@@ -13,7 +15,7 @@ export default function UpdateUser(props) {
   const updateStudentHandler = async () => {
     console.log(props.student);
 
-    const response = await fetch("http://localhost:3000/api/user", {
+    const response = await fetch(`${URI}api/user"`, {
       method: "PUT",
       mode: "cors",
       cache: "no-cache",

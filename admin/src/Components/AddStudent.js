@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-import base64Image from "base64-img";
 import axios from "axios";
+import { URI } from "../utils/keys";
 
 import "./AddStudent.css";
 
@@ -23,15 +23,11 @@ export default function AddStudent(props) {
     formData.append("name", student.name);
     formData.append("mobile", student.mobile);
 
-    const { data } = await axios.post(
-      "http://localhost:3000/api/auth/signup",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const { data } = await axios.post(`${URI}api/auth/signup`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     console.log(data);
     props.setNewStudent(data);

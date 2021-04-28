@@ -5,25 +5,23 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 
 import AddDoorKeeper from "./AddDoorKeeper";
+import { URI } from "../utils/keys";
 
 export default function DoorKeeper() {
   const [doorKeepers, setDoorKeepers] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
 
   const deleteDoorKeeperHandler = async (doorKeeper) => {
-    const resposne = await fetch(
-      "http://localhost:3000/api/doorKeeper/delete",
-      {
-        method: "DELETE",
-        mode: "cors",
-        cache: "no-cache",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify({ email: doorKeeper.email }),
-      }
-    );
+    const resposne = await fetch(`${URI}api/doorKeeper/delete"`, {
+      method: "DELETE",
+      mode: "cors",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({ email: doorKeeper.email }),
+    });
 
     const data = await resposne.json();
 
@@ -38,7 +36,7 @@ export default function DoorKeeper() {
 
   useEffect(() => {
     const main = async () => {
-      const resposne = await fetch("http://localhost:3000/api/doorKeeper", {
+      const resposne = await fetch(`${URI}api/doorKeeper"`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",

@@ -4,16 +4,15 @@ import { Table, Badge } from "react-bootstrap";
 import { FcApprove } from "react-icons/fc";
 import { FcDisapprove } from "react-icons/fc";
 
+import { URI } from "../utils/keys";
+
 export default function Requests() {
   const [requests, setRequests] = useState([]);
-
-  const base64String =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAB0CAYAAABUmhYnAAAAAklEQVR4AewaftIAAAK0SURBVO3BSY7kQAwEQQ9C//+yTx95SkCQqhcOzeIX1hjFGqVYoxRrlGKNUqxRijVKsUYp1ijFGqVYoxRrlGKNUqxRijVKsUa5eCgJ30nlJAlPqHRJ+E4qTxRrlGKNUqxRLl6m8qYk3KFyRxLuUHlTEt5UrFGKNUqxRrn4sCTcoXJHEjqVLgmdypuScIfKJxVrlGKNUqxRLv5zKpMUa5RijVKsUS6GSUKncpKETuUvK9YoxRqlWKNcfJjKb5KETuUJld+kWKMUa5RijXLxsiT8JJUuCZ1Kl4RO5SQJv1mxRinWKMUa5eIhlb9M5UTlLynWKMUapVijXDyUhE6lS8KbVDqVLgmdSpeETuUkCW9S+aRijVKsUYo1ysVDKicqXRI6lSeS0KnckYQ7VE6ScEcSOpUnijVKsUYp1ijxCx+UhDepnCThRKVLQqfSJeFEpUvCHSpvKtYoxRqlWKNcfDOVkyR0Kl0STlS6JHRJOEnCicoTKp9UrFGKNUqxRolfeFES7lA5ScKbVLokdConSehUnkhCp/JEsUYp1ijFGuXiZSpvUjlJQqfyk5LQqZyovKlYoxRrlGKNEr/wQBK+k8pJEjqVLgmdSpeETuUkCZ1Kl4QTlTcVa5RijVKsUS5epvKmJJwkoVPpktCpnKicJOEkCT+pWKMUa5RijXLxYUm4Q+VNKl0SOpUuCZ1Kp9IloVM5ScInFWuUYo1SrFEuhklCp3KShJMknKh0SehUOpVPKtYoxRqlWKNc/GdUuiR0Kl0S7lDpktCpfFKxRinWKMUa5eLDVD5JpUvCSRJOknCi0iXhNynWKMUapVijXLwsCd8pCXeodEnoVJ5QOUlCp/KmYo1SrFGKNUr8whqjWKMUa5RijVKsUYo1SrFGKdYoxRqlWKMUa5RijVKsUYo1SrFGKdYo/wDUsBPle3QEgQAAAABJRU5ErkJggg==";
 
   useEffect(() => {
     // API call. Fetch all students
     const main = async () => {
-      const resposne = await fetch("http://localhost:3000/api/request", {
+      const resposne = await fetch(`${URI}api/request"`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -31,7 +30,7 @@ export default function Requests() {
   }, []);
 
   const requestHandler = async (request, requestApproval) => {
-    const resposne = await fetch("http://localhost:3000/api/request", {
+    const resposne = await fetch(`${URI}api/request"`, {
       method: "PUT",
       mode: "cors",
       cache: "no-cache",
@@ -54,7 +53,6 @@ export default function Requests() {
 
   return (
     <div>
-      <img src={base64String} alt="QRCode" />
       {requests.length ? (
         <div>
           <Table striped bordered hover>

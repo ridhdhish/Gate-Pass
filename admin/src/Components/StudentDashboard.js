@@ -6,6 +6,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 import UpdateUser from "./UpdateUser";
 
+import { URI } from "../utils/keys";
+
 export default function StudentDashboard() {
   const [isAdd, setIsAdd] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -15,7 +17,7 @@ export default function StudentDashboard() {
   useEffect(() => {
     // API call. Fetch all students
     const main = async () => {
-      const resposne = await fetch("http://localhost:3000/api/user", {
+      const resposne = await fetch(`${URI}api/user`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -38,7 +40,7 @@ export default function StudentDashboard() {
   };
 
   const deleteStudentHandler = async (student) => {
-    const response = await fetch("http://localhost:3000/api/user", {
+    const response = await fetch(`${URI}api/user`, {
       method: "DELETE",
       mode: "cors",
       cache: "no-cache",
