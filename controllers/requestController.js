@@ -1,4 +1,5 @@
 const Request = require("../models/Request");
+const User = require("../models/User");
 const QRCode = require("qrcode");
 const { main } = require("../utils/sendQR");
 
@@ -9,7 +10,15 @@ module.exports.makeRequest = async (req, res) => {
       email: req.user.email,
     });
 
-    res.status(200).json({ request });
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ err: "cannot find user. Login again" });
+    }
+
+    user.isPending = true;
+    user.save();
+
+    res.status(200).json({ request, user });
   } catch (err) {
     console.log(err);
   }
@@ -57,7 +66,7 @@ module.exports.updateRequest = async (req, res) => {
         }
       };
 
-      const url = await generateQR("Hello");
+      const url = await generateQR(request._id);
       request.imgBase64 = url;
 
       main(url, request.email);

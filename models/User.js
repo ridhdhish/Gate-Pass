@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
   profilePic: {
     type: String,
   },
+  isPending: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const User = mongoose.model("users", userSchema);
