@@ -67,10 +67,8 @@ export default function Requests() {
                 {/* <th>Profile Pic</th> */}
                 <th>Student Email</th>
                 <th>Reason</th>
-                <th>Leave Date</th>
-                <th>Leave Time</th>
-                <th>Return Date</th>
-                <th>Return Time</th>
+                <th>Leave</th>
+                <th>Return</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -81,14 +79,8 @@ export default function Requests() {
                     <td>{index + 1}</td>
                     <td>{request.email}</td>
                     <td>{request.reason}</td>
-                    <td>{`${new Date(request.leave_date).getDate()}/${
-                      new Date(request.leave_date).getMonth() + 1
-                    }/${new Date(request.leave_date).getFullYear()}`}</td>
-                    <td>{request.leave_time}</td>
-                    <td>{`${new Date(request.return_date).getDate()}/${
-                      new Date(request.return_date).getMonth() + 1
-                    }/${new Date(request.return_date).getFullYear()}`}</td>
-                    <td>{request.return_time}</td>
+                    <td>{request.leave}</td>
+                    <td>{request.return}</td>
                     <td>
                       {request.approved === "pending" ? (
                         <>
