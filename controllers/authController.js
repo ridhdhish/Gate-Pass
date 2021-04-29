@@ -72,7 +72,7 @@ module.exports.checkOTP = async (req, res) => {
       const user = await User.findOne({ email: req.body.email });
 
       if (user) {
-        const token = generateToken(user);
+        const token = generateToken({ email: user.email, _id: user._id });
         return res.status(200).json({ user, token });
       }
 
