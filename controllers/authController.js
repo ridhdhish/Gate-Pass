@@ -88,8 +88,9 @@ module.exports.checkOTP = async (req, res) => {
 // Me API
 module.exports.me = async (req, res) => {
   try {
+    const user = User.findById(req.user._id);
     console.log(req.user);
-    res.json({ user: req.user });
+    res.json({ user });
   } catch (err) {
     console.log(err);
   }
