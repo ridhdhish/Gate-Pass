@@ -84,3 +84,13 @@ module.exports.updateRequest = async (req, res) => {
     console.log(err);
   }
 };
+
+module.exports.deleteRequest = async (req, res) => {
+  try {
+    const requests = await Request.deleteMany({});
+
+    res.status(200).json({ msg: "All requests are deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+};

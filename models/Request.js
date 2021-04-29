@@ -21,6 +21,10 @@ const requestSchema = new mongoose.Schema({
     type: String,
     required: [true, "Email must be required"],
   },
+  name: {
+    type: String,
+    required: [true, "Name must be required"],
+  },
   imgBase64: {
     type: String,
     default: "",
