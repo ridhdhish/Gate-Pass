@@ -65,6 +65,7 @@ export default function Requests() {
               <tr>
                 <th>#</th>
                 {/* <th>Profile Pic</th> */}
+                <th>Name</th>
                 <th>Student Email</th>
                 <th>Reason</th>
                 <th>Leave</th>
@@ -77,6 +78,7 @@ export default function Requests() {
                 return (
                   <tr key={request._id}>
                     <td>{index + 1}</td>
+                    <td>{request.name}</td>
                     <td>{request.email}</td>
                     <td>{request.reason}</td>
                     <td>{request.leave}</td>
