@@ -94,3 +94,18 @@ module.exports.deleteRequest = async (req, res) => {
     console.log(err);
   }
 };
+
+module.exports.getRequest = async (req, res) => {
+  const requestId = req.query.id;
+  try {
+    const request = await Request.findById(requestId);
+
+    if (!request) {
+      return res.status(404).send({ err: "Cannot find request" });
+    }
+
+    res.status(200).json({ request });
+  } catch (err) {
+    console.log(err);
+  }
+};
