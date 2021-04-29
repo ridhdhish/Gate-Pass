@@ -45,19 +45,20 @@ module.exports.login = async (req, res) => {
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (user) {
-      const otp = otpGenerator();
-      const isMailed = await main(otp, email);
+    // if (user) {
+    //   const otp = otpGenerator();
+    //   const isMailed = await main(otp, email);
 
-      if (isMailed) {
-        return res.status(200).json({
-          msg: "OTP has been sent to your registered email address",
-          otp,
-        });
-      }
-    } else {
-      return sendResponse(res, "Invalid Credentials", 404);
-    }
+    //   if (isMailed) {
+    //     return res.status(200).json({
+    //       msg: "OTP has been sent to your registered email address",
+    //       otp,
+    //     });
+    //   }
+    // } else {
+    //   return sendResponse(res, "Invalid Credentials", 404);
+    // }
+    res.status(200).json({ msg: "hello" });
   } catch (err) {
     console.log(err);
     return sendResponse(res, "Internal server error");
