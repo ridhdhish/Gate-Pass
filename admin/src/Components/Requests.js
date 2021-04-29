@@ -12,7 +12,7 @@ export default function Requests() {
   useEffect(() => {
     // API call. Fetch all students
     const main = async () => {
-      const resposne = await fetch(`${URI}api/request"`, {
+      const resposne = await fetch(`${URI}api/request`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -23,6 +23,7 @@ export default function Requests() {
       });
 
       const data = await resposne.json();
+      console.log(data.requests);
       setRequests(data.requests);
     };
 
@@ -30,7 +31,7 @@ export default function Requests() {
   }, []);
 
   const requestHandler = async (request, requestApproval) => {
-    const resposne = await fetch(`${URI}api/request"`, {
+    const resposne = await fetch(`${URI}api/request`, {
       method: "PUT",
       mode: "cors",
       cache: "no-cache",

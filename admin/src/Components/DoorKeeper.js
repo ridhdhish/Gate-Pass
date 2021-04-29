@@ -12,7 +12,7 @@ export default function DoorKeeper() {
   const [isAdd, setIsAdd] = useState(false);
 
   const deleteDoorKeeperHandler = async (doorKeeper) => {
-    const resposne = await fetch(`${URI}api/doorKeeper/delete"`, {
+    const resposne = await fetch(`${URI}api/doorKeeper/delete`, {
       method: "DELETE",
       mode: "cors",
       cache: "no-cache",
@@ -36,7 +36,7 @@ export default function DoorKeeper() {
 
   useEffect(() => {
     const main = async () => {
-      const resposne = await fetch(`${URI}api/doorKeeper"`, {
+      const resposne = await fetch(`${URI}api/doorKeeper`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
