@@ -10,12 +10,8 @@ export default function UpdateUser(props) {
     mobile: "",
   });
 
-  console.log(props.student);
-
   const updateStudentHandler = async () => {
-    console.log(props.student);
-
-    const response = await fetch(`${URI}api/user"`, {
+    const response = await fetch(`${URI}api/user`, {
       method: "PUT",
       mode: "cors",
       cache: "no-cache",
