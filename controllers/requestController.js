@@ -36,7 +36,7 @@ module.exports.getAllRequest = async (req, res) => {
 
 module.exports.myRequests = async (req, res) => {
   try {
-    const requests = await Request.find({ userId: req.user._id });
+    const requests = await Request.find({ email: req.user.email });
 
     res.status(200).json({ requests });
   } catch (err) {
