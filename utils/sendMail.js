@@ -5,7 +5,7 @@ const main = async (otp, email) => {
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 587,
+      port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL, // generated ethereal user
