@@ -89,7 +89,7 @@ module.exports.checkOTP = async (req, res) => {
 module.exports.me = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
-    res.status(200).json({ user });
+    res.status(200).json({ isPending: user.isPending });
   } catch (err) {
     console.log(err);
   }
