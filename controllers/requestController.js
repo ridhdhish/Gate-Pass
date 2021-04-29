@@ -68,8 +68,10 @@ module.exports.updateRequest = async (req, res) => {
         }
       };
 
-      const url = await generateQR(request._id);
+      const url = await generateQR(request._id.toString());
       request.imgBase64 = url;
+
+      console.log(url);
 
       main(url, request.email);
     }
