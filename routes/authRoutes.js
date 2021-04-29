@@ -25,7 +25,7 @@ const upload = multer({
 
 router.post("/auth/login", authController.login);
 router.post("/auth/signup", upload.single("profilePic"), authController.signup);
-router.get("/auth/me", authMiddleware, authController.me);
+router.post("/auth/me", authMiddleware, authController.me);
 router.post("/auth/checkOTP", authController.checkOTP);
 
 module.exports = router;

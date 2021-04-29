@@ -6,7 +6,7 @@ const router = new Router();
 
 router.post("/", authMiddleware, requestController.makeRequest);
 router.get("/", requestController.getAllRequest);
-router.get("/getRequest", authMiddleware, requestController.myRequests);
+router.post("/getRequest", authMiddleware, requestController.myRequests);
 router.put("/", requestController.updateRequest);
 router.delete("/", requestController.deleteRequest);
 router.get("/:id", requestController.getRequest);
