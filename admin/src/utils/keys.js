@@ -1,1 +1,1 @@
-export const URI = "https://gatepass-node-api.herokuapp.com/";
+export const URI = "localhost:5000/";
