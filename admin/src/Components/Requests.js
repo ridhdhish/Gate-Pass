@@ -38,7 +38,11 @@ export default function Requests() {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ requestApproval, requestId: request._id }),
+      body: JSON.stringify({
+        requestApproval,
+        requestId: request._id,
+        email: request.email,
+      }),
     });
 
     const data = await resposne.json();

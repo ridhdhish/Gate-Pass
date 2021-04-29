@@ -45,15 +45,17 @@ module.exports.myRequests = async (req, res) => {
 };
 
 module.exports.updateRequest = async (req, res) => {
-  const { requestApproval, requestId } = req.body;
+  const { requestApproval, requestId, email } = req.body;
   try {
     const request = await Request.findById(requestId);
+    const user = await User.findOne({ email });
 
     if (!request) {
       return res.status(404).json({ msg: "Cannot find current request" });
     }
 
     request.approved = requestApproval;
+    user.isPending = false;
 
     if (request.approved === "approved") {
       const generateQR = async (text) => {
@@ -73,6 +75,7 @@ module.exports.updateRequest = async (req, res) => {
     }
 
     request.save();
+    user.save();
 
     res.status(200).json({ request });
   } catch (err) {
