@@ -5,21 +5,13 @@ const requestSchema = new mongoose.Schema({
     type: String,
     required: [true, "reason must be required"],
   },
-  leave_date: {
-    type: Date,
-    required: [true, "Leave date must be required"],
-  },
-  leave_time: {
+  leave: {
     type: String,
-    required: [true, "Leave time must be required"],
+    required: [true, "Leave date and time must be required"],
   },
-  return_date: {
-    type: Date,
-    required: [true, "Return date must be required"],
-  },
-  return_time: {
+  return: {
     type: String,
-    required: [true, "Return time must be required"],
+    required: [true, "Return date and time must be required"],
   },
   approved: {
     type: String,
