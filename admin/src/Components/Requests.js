@@ -68,8 +68,10 @@ export default function Requests() {
                 <th>Name</th>
                 <th>Student Email</th>
                 <th>Reason</th>
-                <th>Leave</th>
-                <th>Return</th>
+                <th>Leave Date</th>
+                <th>Leave Time</th>
+                <th>Return Date</th>
+                <th>Return Time</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -81,8 +83,10 @@ export default function Requests() {
                     <td>{request.name}</td>
                     <td>{request.email}</td>
                     <td>{request.reason}</td>
-                    <td>{request.leave}</td>
-                    <td>{request.return}</td>
+                    <td>{request.leave.split(" ")[0]}</td>
+                    <td>{request.leave.split(" ")[1].split(".")[0]}</td>
+                    <td>{request.return.split(" ")[0]}</td>
+                    <td>{request.return.split(" ")[1].split(".")[0]}</td>
                     <td>
                       {request.approved === "pending" ? (
                         <>
