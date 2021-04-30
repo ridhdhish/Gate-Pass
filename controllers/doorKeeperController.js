@@ -1,5 +1,9 @@
 const DoorKeeper = require("../models/DoorKeeper");
 
+const { generateToken } = require("../utils/createToken");
+const { otpGenerator } = require("../utils/OTPGenerator");
+const { main } = require("../utils/sendMail");
+
 module.exports.add = async (req, res) => {
   const { email, name } = req.body;
   try {
