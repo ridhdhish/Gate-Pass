@@ -96,7 +96,7 @@ module.exports.deleteRequest = async (req, res) => {
 };
 
 module.exports.getRequest = async (req, res) => {
-  const requestId = req.query.id;
+  const requestId = req.params.id;
   try {
     const request = await Request.findById(requestId);
 
